@@ -13,25 +13,25 @@ const Person = new GraphQLObjectType({
   fields: () => {
     return {
       id: {
-        typeOf: GraphQLInt,
+        type: GraphQLInt,
         resolve(person) {
           return person.id;
         }
       },
       firstName: {
-        typeOf: GraphQLString,
+        type: GraphQLString,
         resolve(person) {
           return person.firstName;
         }
       },
       lastName: {
-        typeOf: GraphQLString,
+        type: GraphQLString,
         resolve(person) {
           return person.lastName;
         }
       },
       email: {
-        typeOf: GraphQLString,
+        type: GraphQLString,
         resolve(person) {
           return person.email;
         }
