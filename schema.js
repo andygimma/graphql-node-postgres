@@ -35,6 +35,12 @@ const Person = new GraphQLObjectType({
         resolve(person) {
           return person.email;
         }
+      },
+      posts: {
+        type: new GraphQLList(Post),
+        resolve(person) {
+          return person.getPosts();
+        }
       }
     }
   }
@@ -107,7 +113,5 @@ const Query = new GraphQLObjectType({
 const Schema = new GraphQLSchema({
   query: Query
 });
-console.log("Here3");
-
 
 export default Schema;
