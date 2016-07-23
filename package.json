@@ -1,5 +1,5 @@
 {
-  "name": "graphql",
+  "name": "graphqlTest",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -11,9 +11,12 @@
   "dependencies": {
     "babel-preset-node5": "^11.1.0",
     "faker": "^3.1.0",
+    "graphql": "^0.6.2",
     "lodash": "^4.13.1",
     "pg": "^6.0.3",
     "pg-hstore": "^2.3.2",
+    "react": "^15.2.1",
+    "react-dom": "^15.2.1",
     "sequelize": "^3.23.6"
   }
 }
