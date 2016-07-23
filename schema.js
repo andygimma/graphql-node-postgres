@@ -46,19 +46,19 @@ const Post = new GraphQLObjectType({
   fields: () => {
     return {
       id: {
-        typeOf: GraphQLInt,
+        type: GraphQLInt,
         resolve(post) {
           return post.id;
         }
       },
       title: {
-        typeOf: GraphQLString,
+        type: GraphQLString,
         resolve(post) {
           return post.title;
         }
       },
       content: {
-        typeOf: GraphQLString,
+        type: GraphQLString,
         resolve(post) {
           return post.content;
         }
@@ -84,6 +84,20 @@ const Query = new GraphQLObjectType({
         },
         resolve(root, args) {
           return Db.models.person.findAll({where: args});
+        }
+      },
+      posts: {
+        type: new GraphQLList(Post),
+        args: {
+          id: {
+            type: GraphQLInt
+          },
+          title: {
+            type: GraphQLString
+          }
+        },
+        resolve(root, args) {
+          return Db.models.post.findAll({where: args});
         }
       }
     }
