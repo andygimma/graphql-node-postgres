@@ -3,6 +3,7 @@ import {
   GraphQLInt,
   GraphQLString,
   GraphQLList,
+  GraphQLSchema
 } from 'graphql';
 import Db from './db';
 
@@ -46,8 +47,8 @@ const Post = new GraphQLObjectType({
     return {
       id: {
         typeOf: GraphQLInt,
-        resolve(person) {
-          return person.id;
+        resolve(post) {
+          return post.id;
         }
       },
       title: {
@@ -64,7 +65,7 @@ const Post = new GraphQLObjectType({
       }
     }
   }
-})
+});
 
 const Query = new GraphQLObjectType({
   name: "Query",
@@ -80,7 +81,7 @@ const Query = new GraphQLObjectType({
           email: {
             type: GraphQLString
           }
-        }
+        },
         resolve(root, args) {
           return Db.models.person.findAll({where: args});
         }
@@ -88,3 +89,11 @@ const Query = new GraphQLObjectType({
     }
   }
 });
+
+const Schema = new GraphQLSchema({
+  query: Query
+});
+console.log("Here3");
+
+
+export default Schema;
