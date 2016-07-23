@@ -2,6 +2,7 @@ import {
   GraphQLObjectType,
   GraphQLInt,
   GraphQLString,
+  GraphQLList,
 } from 'graphql';
 import Db from './db';
 
@@ -64,3 +65,26 @@ const Post = new GraphQLObjectType({
     }
   }
 })
+
+const Query = new GraphQLObjectType({
+  name: "Query",
+  description: "This is a Query",
+  fields: () => {
+    return {
+      people: {
+        type: new GraphQLList(Person),
+        args: {
+          id: {
+            type: GraphQLInt
+          },
+          email: {
+            type: GraphQLString
+          }
+        }
+        resolve(root, args) {
+          return Db.models.person.findAll({where: args});
+        }
+      }
+    }
+  }
+});
